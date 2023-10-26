@@ -46,7 +46,7 @@ class SinglyLinkedList:
 
     # Get the current item
     currentItem = self.head
-    
+
     #Loop through the list using a range from the current size of the singly
     #linked list
     for n in range(self.size):
@@ -151,14 +151,17 @@ class SinglyLinkedList:
     #If the singly linked list is empty throw an exception
     if(self.isEmpty()):
       raise Exception("This linked list is empty")
+    #If the head.data equals the data passed in then set the head to the current
+    #heads next value
+    elif(self.head.data == data):
+      self.head = self.head.nxt
+      self.size -= 1
+      return
     
-    #If the size is only a length of 1 of the head.data equals the data passed
-    #in then clear the head and tail
-    elif(self.size == 1 or self.head.data == data):
+    #If the size is only a length of 1 then clear the head and tail
+    elif(self.size == 1):
       self.head = None
       self.tail = None
-
-      return
     else:
       
       #Set the NodRef Placeholder for garbage collection
@@ -193,9 +196,34 @@ class SinglyLinkedList:
     return self.size == 0
   
   #Method to get the index
-  # def indexOf(self, data: T) -> int:
+  def indexOf(self, data:T) -> int:
+    # Set the index
+    index = 0
+    
+    #Set the current item to the head value
+    currentItem = self.head
+    #Loop throught the items while the current items is not None
+    while currentItem is not None:
+      # If the current items data equals the data passed in then break from the loop
+      if(currentItem.data == data):
+        break
+      # Set the current item to the next item the current item has a point to
+      currentItem = currentItem.nxt
+      # Increase the size of the index
+      index += 1
+    # If the index is larger then the size of the linked list then we will
+    # return -1
+    if(index > self.size):
+      return -1
+    # Else we will return the index
+    else:
+      return index
+    
   #Method to check if the singly linked list contains a node with certain data
-  # def contains(self, data: T) -> bool:  
+  def contains(self, data: T) -> bool:
+    # Get the index of the data passed in. If the index returns -1 then we will
+    # return false. Else we will return true 
+    return self.indexOf(data) != -1
 
  
 #Create list
@@ -204,13 +232,10 @@ list = SinglyLinkedList()
 list.add(Node("Mon"))
 list.add(Node("Tues"))
 list.add(Node("Wed"))
+list.add(Node("Thurs"))
+list.add(Node("Fri"))
+list.add(Node("Sat"))
+list.add(Node("Sun"))
 
-#Print string of list
-print(list.__str__())
-
-#Remove a item from the list
-list.removeItem(list[1].data)
-
-#Print the string of the list
-print(list.__str__())
+#Method Testing
 
