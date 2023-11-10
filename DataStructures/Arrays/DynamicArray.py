@@ -4,6 +4,7 @@ from typing import TypeVar
 
 T = TypeVar("T")
 
+# TODO: Need to complete testing on this dynamic
 class DynamicArray(Generic[T]):
 
   # Constructor for dynamic array
