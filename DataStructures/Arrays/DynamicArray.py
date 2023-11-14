@@ -4,7 +4,6 @@ from typing import TypeVar
 
 T = TypeVar("T")
 
-# TODO: Need to complete testing on this dynamic
 class DynamicArray(Generic[T]):
 
   # Constructor for dynamic array
@@ -124,25 +123,3 @@ class DynamicArray(Generic[T]):
       raise Exception("Array is empty")
     # Return the index of an item or -1 if not found
     return self.array.indexOf(item)
-
-# Testing
-# dyArr = DynamicArray()
-
-# dyArr.add("a")
-# dyArr.add("b")
-# dyArr.add("c")
-# dyArr.add("d")
-# dyArr.add("e")
-# dyArr.add("f")
-# dyArr.add("g")
-
-# print(dyArr.__str__())
-
-# dyArr.remove("a")
-
-# print(dyArr.__str__())
-
-
-# print("index of b", dyArr.indexOf("b"))
-# print("contains d", dyArr.contains("d"))
-# print("find g", dyArr.find("g"))

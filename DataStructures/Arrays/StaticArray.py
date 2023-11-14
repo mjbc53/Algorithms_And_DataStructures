@@ -14,7 +14,7 @@ class StaticArray(Generic[T]):
     # if the capactiy is none or 0 then we will throw an error
     if(capacity == 0 or capacity is None):
       raise Exception("capacity must not be null or 0")
-    # define the lenght
+    # define the length
     self.length: int = 0
     # define the capacity
     self.capacity: int = capacity
@@ -65,7 +65,7 @@ class StaticArray(Generic[T]):
   # Add to the array 
   # Time Complexity O(1)
   def add(self, item:T) -> None:
-    # Check if the lenght is the capacity. If it is then throw and error
+    # Check if the length is the capacity. If it is then throw and error
     if(self.length == self.capacity):
       raise Exception("Array is already at max capacity")
     
@@ -85,7 +85,7 @@ class StaticArray(Generic[T]):
     # and error
     elif (index > self.length - 1):
       raise Exception("Out of Range")
-    # Deletet the element in the array
+    # Delete the element in the array
     del self.array[index]
     #Removed from the length
     self.length -= 1
@@ -162,24 +162,3 @@ class StaticArray(Generic[T]):
       return -1
     # return index if it is not none
     return index
-
-
-
-#Testing
-# arr = StaticArray(5)
-
-# arr.add(10)
-# arr.add(2)
-# arr.add(3)
-# arr.add(4)
-# arr.add(5)
-
-# print(arr[0])
-
-# arr.remove(5)
-
-# print(arr.__str__())
-# print("Index of element 2 {0}",arr.indexOf(2))
-
-
-# print("Find element 3 {0}", arr.find(3))
