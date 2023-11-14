@@ -237,5 +237,6 @@ list.add(Node("Fri"))
 list.add(Node("Sat"))
 list.add(Node("Sun"))
 
+
 #Method Testing
 
