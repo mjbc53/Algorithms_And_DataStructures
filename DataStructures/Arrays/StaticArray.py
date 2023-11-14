@@ -31,8 +31,9 @@ class StaticArray(Generic[T]):
 
     # Set up the element that we will be returning
     el = None
+
     # Loop throught the array and find the element and return it
-    for n in range(index):
+    for n in range(index + 1):
       # Set the element to return
       el = self.array[n]
 
@@ -130,8 +131,8 @@ class StaticArray(Generic[T]):
     # Loop through the array and look for the element we are looking for
     for n in range(0, self.length):
       # If the element equals the item we passed in then we will set the el placeholder
-      if(arr[n] == item):
-        el = arr[n]
+      if(self.array[n] == item):
+        el = self.array[n]
     
     # Return the element
     return el
@@ -165,18 +166,20 @@ class StaticArray(Generic[T]):
 
 
 #Testing
-arr = StaticArray(5)
+# arr = StaticArray(5)
 
-arr.add(10)
-arr.add(2)
-arr.add(3)
-arr.add(4)
-arr.add(5)
+# arr.add(10)
+# arr.add(2)
+# arr.add(3)
+# arr.add(4)
+# arr.add(5)
 
-arr.remove(5)
+# print(arr[0])
 
-print(arr.__str__())
-print("Index of element 2 {0}",arr.indexOf(2))
+# arr.remove(5)
+
+# print(arr.__str__())
+# print("Index of element 2 {0}",arr.indexOf(2))
 
 
-print("Find element 3 {0}", arr.find(3))
+# print("Find element 3 {0}", arr.find(3))

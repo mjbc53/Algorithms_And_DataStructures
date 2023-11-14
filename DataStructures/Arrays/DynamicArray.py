@@ -1,4 +1,4 @@
-import StaticArray
+from StaticArray import StaticArray
 from typing import Generic
 from typing import TypeVar
 
@@ -8,11 +8,14 @@ T = TypeVar("T")
 class DynamicArray(Generic[T]):
 
   # Constructor for dynamic array
-  def __init__(self) -> None:
+  def __init__(self, initialCapacity: int or None = None) -> None:
     # define the base length
     self.length: int = 0
     # define the capacity of the static array
-    self.capacity: int = 5
+    if(initialCapacity is None):
+      self.capacity: int = 5
+    else:
+        self.capacity: int = initialCapacity
     # create the static array 
     self.array: StaticArray = StaticArray(self.capacity)
 
@@ -46,9 +49,10 @@ class DynamicArray(Generic[T]):
     # dynamic array
     if(self.length + 1 > self.capacity):
       newArr = StaticArray(self.capacity * 2)
-      for n in range(0, self.length):
+      for n in range(0,self.length):
         newArr.add(self.array[n])
       self.array = newArr
+      self.capacity = self.capacity * 2
     
     # Add to the array
     self.array.add(item)
@@ -120,3 +124,25 @@ class DynamicArray(Generic[T]):
       raise Exception("Array is empty")
     # Return the index of an item or -1 if not found
     return self.array.indexOf(item)
+
+# Testing
+# dyArr = DynamicArray()
+
+# dyArr.add("a")
+# dyArr.add("b")
+# dyArr.add("c")
+# dyArr.add("d")
+# dyArr.add("e")
+# dyArr.add("f")
+# dyArr.add("g")
+
+# print(dyArr.__str__())
+
+# dyArr.remove("a")
+
+# print(dyArr.__str__())
+
+
+# print("index of b", dyArr.indexOf("b"))
+# print("contains d", dyArr.contains("d"))
+# print("find g", dyArr.find("g"))
