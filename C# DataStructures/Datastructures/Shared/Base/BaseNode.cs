@@ -5,12 +5,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C__DataStructures.Datastructures
+namespace C__DataStructures.Datastructures.Shared.Base
 {
-    //TODO: Need to figure out how to turn this into a proper abstract class
-    internal class Node<T>
+    public abstract class BaseNode<T>
     {
         T Data { get; set; }
-        Node<T> Next { get; set; }
     }
 }
