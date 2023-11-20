@@ -1,0 +1,14 @@
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\bin\Debug\net6.0\C# DataStructures.exe
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\bin\Debug\net6.0\C# DataStructures.deps.json
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\bin\Debug\net6.0\C# DataStructures.runtimeconfig.json
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\bin\Debug\net6.0\C# DataStructures.dll
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\bin\Debug\net6.0\C# DataStructures.pdb
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.GeneratedMSBuildEditorConfig.editorconfig
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.AssemblyInfoInputs.cache
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.AssemblyInfo.cs
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.csproj.CoreCompileInputs.cache
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.dll
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\refint\C# DataStructures.dll
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.pdb
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\C# DataStructures.genruntimeconfig.cache
+E:\Repos\Algorithms_And_DataStructures\C# DataStructures\obj\Debug\net6.0\ref\C# DataStructures.dll
