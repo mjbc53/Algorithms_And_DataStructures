@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace C__DataStructures.Datastructures.Shared.Base
 {
-    public abstract class BaseLinkedList<T>
+    public abstract class BaseLinkedList<T, K>
     {
         public int Length { get; set; } = 0;
         public T? Head { get; set; }
@@ -18,7 +18,8 @@ namespace C__DataStructures.Datastructures.Shared.Base
         public abstract void Remove();
         public abstract void RemoveFirst();
         public abstract void RemoveLast();
-        public abstract bool RemoveItem(T iiem);
+        public abstract void RemoveItem(K data);
+        public abstract void Find(T item);
         public abstract bool Contains(T item);
         public abstract int IndexOf(T item);
         public abstract bool IsEmpty();

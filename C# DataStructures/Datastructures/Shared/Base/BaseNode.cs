@@ -9,6 +9,6 @@ namespace C__DataStructures.Datastructures.Shared.Base
 {
     public abstract class BaseNode<T>
     {
-        T Data { get; set; }
+        public T Data { get; set; }
     }
 }
