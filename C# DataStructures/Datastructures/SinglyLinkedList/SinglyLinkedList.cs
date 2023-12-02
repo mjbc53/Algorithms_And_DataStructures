@@ -50,7 +50,7 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
             AddLast(item);
         }
 
-        protected override void AddLast(OneWayNode<T> item)
+        protected internal override void AddLast(OneWayNode<T> item)
         {
 
             //If the list if empty and the head is null. Then we will set the head of the linked list
@@ -181,8 +181,7 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
                 return prevNode;
             }
         }
-
-        protected override OneWayNode<T>? RemoveItem(OneWayNode<T> item)
+        protected internal override OneWayNode<T>? RemoveItem(OneWayNode<T> item)
         {
             //Check if the list is empty or null. If it is then throw an error
             if (IsEmpty() || Head == null)
