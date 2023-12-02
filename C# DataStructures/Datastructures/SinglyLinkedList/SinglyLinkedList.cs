@@ -2,7 +2,9 @@
 using C__DataStructures.Datastructures.Shared.Nodes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,19 +24,33 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
             Length = 1;
             Head = item;
         }
+        public override OneWayNode<T> this[int index] { 
+            get {
 
+                if (index > Length - 1 || index < 0|| IsEmpty()) { 
+                    throw new IndexOutOfRangeException("Out of range. Index is two large or two small.");
+                }
 
-        //public float this[int index] {
-        //    get =>
+                var toReturn = Head;
 
-        //}
+                for (int i = 0; i <= index; i++) {
+                    toReturn = toReturn.Next;
+                }
+
+                if (toReturn == null) {
+                    throw new NullReferenceException("Incountered a null reference issue while tring to retrive the item by the index");
+                }
+
+                return toReturn;
+            }
+        }
 
         public override void Add(OneWayNode<T> item)
         {
             AddLast(item);
         }
 
-        public override void AddLast(OneWayNode<T> item)
+        protected override void AddLast(OneWayNode<T> item)
         {
             //If the list if empty and the head is null. Then we will set the head of the linked list
             //Else we will loop through the linked list and add to the end of it
@@ -83,21 +99,40 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
 
         public override void Clear()
         {
+            //set the length to zero
             Length = 0;
+            //clear the header which will drop all of the values on the linked list.
             Head = null;
+            
         }
 
-        public override void Remove()
+        public override OneWayNode<T>? Remove(OneWayNode<T> item)
         {
-
+            //Call the protected method to remove the items and return the removed item
+           return RemoveItem(item);
         }
 
-        public override void RemoveFirst()
+        public override OneWayNode<T> RemoveFirst()
         {
-            throw new NotImplementedException();
+            //Check if the list is empty. If it is throw an error
+            if (IsEmpty() || Head == null)
+            {
+                throw new InvalidOperationException("The Linked list is currently empty. Please add a value to it before continuing.");
+            }
+            //else clear out the head node
+            else {
+                //Set a placeholder var for the head to return
+                var headPlaceHolder = Head;
+                //Clear the head node.
+                Head = Head.Next;
+                //subtract from the length.
+                Length--;
+                //Return the placeholder
+                return headPlaceHolder;
+            }
         }
 
-        public override void RemoveLast()
+        public override OneWayNode<T> RemoveLast()
         {
             if (IsEmpty() || Head == null)
             {
@@ -105,7 +140,17 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
             }
             else if (Length == 1 && Head != null)
             {
-                Head = null;
+                //Create a place holder for the current head value.
+                var headPlaceHolder = Head;
+
+                //Set the head to null
+                Head = Head.Next;
+
+                //Subtract from the length
+                Length--;
+
+                //Return the head placeholder.
+                return headPlaceHolder;
             }
             else {
                 //Pseudo code.
@@ -128,23 +173,100 @@ namespace C__DataStructures.Datastructures.SinglyLinkedList
                 //Set the next node to null.
                 prevNode.Next = null;
      
-
+                return prevNode;
             }
         }
 
-        public override bool RemoveItem(OneWayNode<T> iiem)
+        protected override OneWayNode<T>? RemoveItem(OneWayNode<T> item)
         {
-            throw new NotImplementedException();
+            //Check if the list is empty or null. If it is then throw an error
+            if (IsEmpty() || Head == null)
+            {
+                throw new InvalidOperationException("The Linked list is currently empty. Please add a value to it before continuing.");
+            }
+            //Check if the lenght of the list is one, the head is not null and the head data matches the 
+            else if (Head != null && Comparer<T>.Default.Compare(item.Data, Head.Data) >= 0)
+            {
+                //Set a placeholder for the head value
+                var headPlaceHolder = Head;
+                //Change the head to is next value. This will either be the next node or null.
+                Head = Head.Next;
+                //Subtract from the length 
+                Length--;
+                //return the palceholder
+                return headPlaceHolder;
+            }
+            else {
+
+                //Set the placeholder for the prev value
+                OneWayNode<T>? prevNode = null;
+                //Set the place holder for the current value 
+                OneWayNode<T>? currentNode = Head.Next;
+
+                //Loop though until we find the node we are looking for or until the currentnode is null
+                while (currentNode != null) {
+                    //Break from the while loop early if we find the item we are looking for
+                    if (Comparer<T>.Default.Compare(item.Data, currentNode.Data) >= 0) {
+                        break;
+                    }
+
+                    //Set the prev node to the current node
+                    prevNode = currentNode;
+                    //Set the current node to the current nodes next node
+                    currentNode = currentNode.Next;
+                }
+
+                //If the the current node is null then throw an error
+                if (currentNode == null) {
+                    throw new ArgumentException("Invalid item pass to this method to remove. No item was found to remove");
+                }
+
+                //Set the prev nodes next node to the node to removes next node
+                prevNode.Next = currentNode.Next;
+
+                //Subtract from the length
+                Length--;
+
+                //return the current node.
+                return currentNode;
+            }
         }
 
         public override bool Contains(OneWayNode<T> item)
         {
-            throw new NotImplementedException();
+            if (IsEmpty() || Head == null)
+            {
+                throw new InvalidOperationException("The Linked list is currently empty. Please add a value to it before continuing.");
+            }
+            else {
+                for (int index = 0; index <= Length - 1; index++) {
+                    if (Comparer<T>.Default.Compare(item.Data, this[index].Data) >= 0) {
+                        return true;
+                    }
+                }    
+                return false;
+            }
+            
         }
 
         public override int IndexOf(OneWayNode<T> item)
         {
-            throw new NotImplementedException();
+
+            if (IsEmpty() || Head == null)
+            {
+                throw new InvalidOperationException("The Linked list is currently empty. Please add a value to it before continuing.");
+            }
+            else
+            {
+                for (int index = 0; index <= Length - 1; index++)
+                {
+                    if (Comparer<T>.Default.Compare(item.Data, this[index].Data) >= 0)
+                    {
+                        return index;
+                    }
+                }
+               return -1;
+            }
         }
 
         public override bool IsEmpty()

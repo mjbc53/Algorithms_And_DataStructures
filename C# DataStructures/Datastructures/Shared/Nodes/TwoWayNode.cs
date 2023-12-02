@@ -11,5 +11,11 @@ namespace C__DataStructures.Datastructures.Shared.Nodes
     {
         public TwoWayNode<T>? Next { get; set; }
         public TwoWayNode<T>? Previous { get; set; }
+        public TwoWayNode(T data, TwoWayNode<T>? next = null, TwoWayNode<T>? prev = null )
+        {
+            Next = next;
+            Previous = prev;
+            Data = data;
+        }
     }
 }
