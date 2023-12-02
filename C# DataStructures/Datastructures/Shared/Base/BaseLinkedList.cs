@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C__DataStructures.Datastructures.Shared.Base
 {
-    public abstract class BaseLinkedList<T>
+    public abstract class BaseLinkedList<T, K>
     {
        
         public int Length { get; set; } = 0;
